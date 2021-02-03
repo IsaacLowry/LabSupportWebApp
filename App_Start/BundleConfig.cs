@@ -25,7 +25,7 @@ namespace LabSupportWebApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/FontA.css",
-                      "~/Content/site.css"));
+                      "~/Content/Custom.css"));
         }
     }
 }

@@ -129,6 +129,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootswatch.css" />
+    <Content Include="Content\Custom.css" />
     <Content Include="Content\FontA.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
