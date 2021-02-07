@@ -25,7 +25,6 @@ textarea {
     max-width: 280px;
 }
 
-
 .navbar-nav button {
     padding: 1.2rem 0;
 }
@@ -74,19 +73,19 @@ textarea {
 
     .navbar-nav .HelpBtn:hover {
         background-color: #003366;
-        font-weight: 900;
+        font-weight: bolder;
     }
 
 
 h1 {
-    font-size: 76;
-    font-weight: 550;
+    font-size: 56px;
+    font-weight: bold;
     color: #333333;
 }
 
 h2 {
     font-size: 1.5rem;
-    font-weight: 550;
+    font-weight: bold;
 }
 
 input {
@@ -97,19 +96,157 @@ input {
 }
 
 .instruction {
-    font-size: 1rem;
+    font-size: 14px;
 }
 
 .JoinQueueBtn {
     font-size: 24px;
     background-color: #5A86FF;
     color: white;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 1rem 2rem;
     border: none;
 }
 
     .JoinQueueBtn:hover {
         background-color: #003366;
-        font-weight: 900;
+        font-weight: bolder;
+    }
+
+
+.ticketSymbol {
+    color: #1238A1;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    font-size: 4rem;
+    animation-name: floating;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.errorMessage {
+    font-size: 14px;
+    font-weight: bold;
+    color: #eb4253;
+    animation-name: floating;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 1px);
+
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+}
+
+.dotContainer {
+    width: 80px;
+    margin: 40px auto;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.Dot1 {
+    background-color: aqua;
+    animation-name: jump;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.Dot2 {
+    background-color: dodgerblue;
+    animation-name: jump;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+
+.Dot3 {
+    background-color: #5A86FF;
+    animation-name: jump;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.Dot4 {
+    background-color: #001bff;
+    animation-name: jump;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.Dot5 {
+    background-color: darkblue;
+    animation-name: jump;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes jump{
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 15px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+
+}
+
+.staffReady {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.hyperlinkText {
+    color: #5A86FF;
+    font-size 1.5rem;
+    font-weight: bold;
+}
+
+    .hyperlinkText:hover {
+        color: #003366;
+        font-weight: bolder;
+    }
+
+.JoinSessionLink {
+    font-size: 9rem;
+    color: #5A86FF;
+    border-bottom: 20px solid transparent;
+}
+
+    .JoinSessionLink:hover {
+        font-size: 10rem;
+        color: #003366;
     }

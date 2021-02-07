@@ -26,5 +26,19 @@ namespace LabSupportWebApp.Controllers
 
             return View();
         }
+
+        public ActionResult Queue()
+        {
+            ViewBag.Message = "You are now in a queue";
+
+            return View();
+        }
+
+        public ActionResult HeadOfQueue()
+        {
+            ViewBag.Message = "You are now head of the queue";
+
+            return View();
+        }
     }
 }
