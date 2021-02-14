@@ -2,6 +2,7 @@
 const UserCode = document.getElementById('UserCode')
 const form = document.getElementById('form')
 const errorElement = document.getElementById('error')
+const UserName = document.getElementById('UserName')
 
 form.addEventListener('submit', (e) => {
     let messages = []
