@@ -2,6 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
+<script src="~/Scripts/Script.js"></script>
+
 <div class="row" style="margin-top: 5vh;">
 
 
@@ -14,13 +16,13 @@
     {
         string AccountUsername = @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
         <span class="UserName">@System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value</span>
-        if (AccountUsername.Contains("(Staff)"))
+        if (AccountUsername.Contains("(Student)"))
         {
             <div>
                 Welcome to practical session support!
             </div>
         }
-        else if (AccountUsername.Contains("(Student)"))
+        else if (AccountUsername.Contains("(Staff)"))
         {
             <div>
                 @Html.ActionLink("View Queues", "about", "home", null, new { @class = "JoinQueueBtn" })
@@ -75,6 +77,36 @@
 
                         </div>
                     </form>
+
+                    <script>
+                        // JavaScript source code
+                        const UserCode = document.getElementById('UserCode')
+                        const form = document.getElementById('form')
+                        const errorElement = document.getElementById('error')
+
+
+                        form.addEventListener('submit', (e) => {
+                            let messages = []
+                            if (UserCode.value === '' || UserCode.value == null) {
+                                messages.push("Please insert a user code to proceed")
+                            }
+
+
+                            if (UserCode.value === '123456') {
+                                messages.push('Please enter a unique code provided by a member of staff')
+                            } else if (UserCode.value.length != 6) {
+                                messages.push('Please enter 6 numbers')
+                            }
+                            else {
+                            }
+
+                            if (messages.length > 0) {
+                                e.preventDefault()
+                                errorElement.innerText = messages.join(',')
+                            }
+
+                        })
+                    </script>
 
                 }
 

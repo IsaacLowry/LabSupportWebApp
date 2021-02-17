@@ -7,10 +7,36 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/Custom.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="@Url.Content("~/Scripts/script.js"))"></script>
+    <script src="~/Scripts/Script.js"></script>
     @RenderSection("JavaScript", required: false)
 </head>
 <body>
+
+    <script type="text/javascript">
+        function displayNotification() {
+            const notification = new Notification("Notification from University Lab Support", {
+                body: "Someone is avaialable to help you!",
+                icon: "https://localhost:44327/Resources/dundeeLogo.png"
+            });
+
+            notification.onclick = (e) => {
+                window.location.href = "@Url.Action("HeadOfQueue", "home")"
+            }
+
+        }
+
+        console.log(Notification.permission);
+        if (Notification.permission === "enabled") {
+            alert("Permission Granted");
+            displayNotification();
+        } else if (Notification.permission !== "disabled") {
+            Notification.requestPermission().then(permission => {
+                console.log(permission);
+
+            });
+        }
+    </script>
+
     <div class="navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -39,7 +65,7 @@
                     @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
                     {
                         <div class="loginError">Error: @Request.QueryString["errormessage"]</div>}
-                   @Html.ActionLink("Help", "contact", "home", null, new { @class = "HelpBtn" })
+                   @Html.ActionLink("Help", "HeadOfQueue", "home", null, new { @class = "HelpBtn" })
                 </div>
             </div>
         </div>
