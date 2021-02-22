@@ -44,6 +44,20 @@ namespace LabSupportWebApp.Controllers
             return View();
         }
 
+        public ActionResult CreateAQueue()
+        {
+            ViewBag.Message = "Create your queue";
+
+            return View();
+        }
+
+        public ActionResult QueueList()
+        {
+            ViewBag.Message = "Open Queues";
+
+            return View();
+        }
+
         public void SignIn()
         {
             if (!Request.IsAuthenticated)

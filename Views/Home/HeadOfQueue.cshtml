@@ -7,21 +7,42 @@
 <audio src="~/Resources/alert.wav" id="HeadOfQueueNotification"></audio>
 
 <script type="text/javascript">
+    const HeadOfQueueNotification = document.getElementById("HeadOfQueueNotification");
 
+            
     window.onload = function () {
-        document.getElementById("HeadOfQueueNotification").play();
-        window.navigator.vibrate(1000);
-        displayNotification();
+        if (document.getElementById('vibrationToggle').checked === true) {
+            window.navigator.vibrate(1000);
+        }
+
+        if (document.getElementById('soundToggle').checked === true) {
+            HeadOfQueueNotification.play();
+        }
+
+        if (document.getElementById('pushToggle').checked === true) {
+            displayNotification();
+        }
+        
     }
 
     setTimeout(function () {
-        document.getElementById("HeadOfQueueNotification").play();
-        window.navigator.vibrate(1000);
+        if (document.getElementById('vibrationToggle').checked === true) {
+            window.navigator.vibrate(1000);
+        }
+
+        if (document.getElementById('soundToggle').checked === true) {
+            HeadOfQueueNotification.play();
+        }
     }, 30000) //time to wait in ms for audio to play
 
     setTimeout(function () {
-        document.getElementById("HeadOfQueueNotification").play();
-        window.navigator.vibrate(1000);
+        if (document.getElementById('vibrationToggle').checked === true) {
+            window.navigator.vibrate(1000);
+        }
+
+        if (document.getElementById('soundToggle').checked === true) {
+            HeadOfQueueNotification.play();
+        }
     }, 60000) //time to wait in ms for audio to play
 </script>
 

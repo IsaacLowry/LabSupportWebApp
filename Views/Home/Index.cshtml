@@ -16,17 +16,17 @@
     {
         string AccountUsername = @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
         <span class="UserName">@System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value</span>
-        if (AccountUsername.Contains("(Student)"))
+        if (AccountUsername.Contains("(Staff)"))
         {
             <div>
                 Welcome to practical session support!
             </div>
         }
-        else if (AccountUsername.Contains("(Staff)"))
+        else if (AccountUsername.Contains("(Student)"))
         {
             <div>
-                @Html.ActionLink("View Queues", "about", "home", null, new { @class = "JoinQueueBtn" })
-                @Html.ActionLink("Create A Queue", "about", "home", null, new { @class = "CreateAQueueBtn" })
+                @Html.ActionLink("View Queues", "QueueList", "home", null, new { @class = "JoinQueueBtn" })
+                @Html.ActionLink("New Queue", "CreateAQueue", "home", null, new { @class = "CreateAQueueBtn" })
             </div>
         }
         else
@@ -72,7 +72,7 @@
                         <div style="margin-top: 3vh;">
                             <p class="instruction"> This should be sent out at the beginning of the session by your module coordinator</p>
                         </div>
-                        <div style="margin-top: 15vh;">
+                        <div style="margin-top: 10vh;">
                             <button class="JoinQueueBtn" type="submit">Join Queue</button>
 
                         </div>

@@ -40,7 +40,10 @@
     <div class="navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href=@Url.Action("index", "home")></a> <img alt="University Logo" src="~/Resources/dundeeLogoName.png" height="60" style="padding-bottom: 1px;"/>
+                <a class="navbar-brand" href=@Url.Action("index", "home")></a> <img alt="University Logo" src="~/Resources/dundeeLogoName.png" height="60" style="padding-bottom: 1px;" />
+                <a class="HomeBtn" href="@Url.Action("index", "home")" role="button">
+                    <i class="fas fa-home"></i>
+                </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navCollapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -51,7 +54,9 @@
 
 
             <div class="navbar-collapse collapse navbar-right" id="navCollapse">
-                <div class="btn-group" role="navigation" aria-label="Navigation Buttons">
+                <div class="btn-group" role="navigation" aria-label="Navigation Buttons" aria-expanded="false">
+
+
 
                     @if (!Request.IsAuthenticated)
                     {
@@ -65,21 +70,121 @@
                     @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
                     {
                         <div class="loginError">Error: @Request.QueryString["errormessage"]</div>}
-                   @Html.ActionLink("Help", "HeadOfQueue", "home", null, new { @class = "HelpBtn" })
+
+                    @*@Html.ActionLink("Help", "HeadOfQueue", "Home", null, new { @class = "HelpBtn"})*@
+
+                    <a class="HelpBtn" href="#" role="button" data-toggle="modal" data-target="#HelpMenu" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cog"></i>
+                    </a>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--Menu Popup-->
+    <div class="modal" id="HelpMenu">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal"><i class="fas fa-times-circle"></i></button>
+                    <h2 class="modal-title">Help</h2>
+                    <hr />
+                    <div class="modal-body">
+                        <table class="helpSettings">
+                            <tr>
+                                <td>
+                                    Sound
+                                </td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" id="soundToggle" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Vibration
+                                </td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" id="vibrationToggle" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Push Notifications
+                                </td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" id="pushToggle">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr />
+                        <div>
+                            <p class="text-info">Vibration will only work for mobile devices.</p>
+                            <p class="text-info">Please ensure that notifications are enabled within the browser before enabling it here.</p>
+                        </div>
+                        <hr />
+                        <div>
+                            <button class="JoinQueueBtn" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+
+    <!--End of Popup-->
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
+            $checkboxes = $(".helpSettings :checkbox");
+
+        $checkboxes.on("change", function () {
+            $checkboxes.each(function () {
+                checkboxValues[this.id] = this.checked;
+            });
+
+            localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+        });
+
+        // On page load
+        $.each(checkboxValues, function (key, value) {
+            $("#" + key).prop('checked', value);
+        });
+
+        var sound
+
+        if (document.getElementById('soundToggle').checked === true) {
+            var sound = 'enabled';
+        } else if (document.getElementById('soundToggle').checked === false) {
+            var sound = 'disabled';
+        }
+
+    </script>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Isaac Lowry</p>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
