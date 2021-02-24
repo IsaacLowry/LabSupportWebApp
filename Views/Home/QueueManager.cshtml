@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "QueueManager";
+}
+
+<div class="mainContainer">
+
+    <div class="row" style="margin-top: 5vh; font-size: 2rem;">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div style="margin-top: 4vh;">
+                <a class="hyperlinkText" href=@Url.Action("QueueList", "home")><i class="fas fa-chevron-left"></i> Open Queues</a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 8vh; font-size: 2rem;">
+
+        <h1>Lab Support</h1>
+
+        <div style="margin-top: 10vh;">
+            <p>There are currently <i style="font-weight: bold;"> 12<i class="numberOfStudents"></i></i> remaining in the queue.</p>
+        </div>
+
+        <div class="col-lg-3 col-lg-offset-3" style="margin-top: 5vh; align-content: center;">
+            <a class="JoinQueueBtn" href="#" role="button" data-toggle="modal">
+                Next Student
+            </a>
+
+        </div>
+
+        <div class="col-lg-3" style="margin-top: 5vh; align-content: center;">
+            <a class="CreateAQueueBtn" href="#" role="button" data-toggle="modal">
+                End Session
+            </a>
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-top: 5vh; font-size: 2rem;">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div style="margin-top: 4vh;">
+                <p>Code: XXXXXXX</p><br />
+                <p></p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+

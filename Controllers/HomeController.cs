@@ -58,6 +58,13 @@ namespace LabSupportWebApp.Controllers
             return View();
         }
 
+        public ActionResult QueueManager()
+        {
+            ViewBag.Message = "Open Queues";
+
+            return View();
+        }
+
         public void SignIn()
         {
             if (!Request.IsAuthenticated)

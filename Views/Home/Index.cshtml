@@ -4,119 +4,128 @@
 
 <script src="~/Scripts/Script.js"></script>
 
-<div class="row" style="margin-top: 5vh;">
+<div class="mainContainer">
+
+    <div class="row" style="margin-top: 5vh;">
+        <div>
 
 
-    @if (!Request.IsAuthenticated)
-    {
-        <div class="wrongAccount">Please log in with a Dundee account</div><br />
-        <p class="ticketSymbol"><i class="fas fa-exclamation-triangle"></i></p>
-    }
-    else
-    {
-        string AccountUsername = @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
-        <span class="UserName">@System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value</span>
-        if (AccountUsername.Contains("(Staff)"))
-        {
-            <div>
-                Welcome to practical session support!
-            </div>
-        }
-        else if (AccountUsername.Contains("(Student)"))
-        {
-            <div>
-                @Html.ActionLink("View Queues", "QueueList", "home", null, new { @class = "JoinQueueBtn" })
-                @Html.ActionLink("New Queue", "CreateAQueue", "home", null, new { @class = "CreateAQueueBtn" })
-            </div>
-        }
-        else
-        {
-            <div class="wrongAccount">Please log in with a Microsoft account with a Dundee domain</div><br />
-        }
-    }
-
-
-    @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
-    {
-        <div class="loginError">Error: @Request.QueryString["errormessage"]</div>}
-
-</div>
-
-
-
-
-
-
-
-    <div class="row" style="margin-top: 10vh; font-size: 2rem;">
-        <div class="col-lg-6 col-lg-offset-3">
-
-
-            <h1>Lab Support</h1>
-            <div style="margin-top: 10vh;">
-
-
-                @if (Request.IsAuthenticated)
+            @if (!Request.IsAuthenticated)
+            {
+                <div class="wrongAccount">Please log in with a Dundee account</div><br />
+                <p class="ticketSymbol"><i class="fas fa-exclamation-triangle"></i></p>
+            }
+            else
+            {
+                string AccountUsername = @System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value;
+                <span class="UserName">@System.Security.Claims.ClaimsPrincipal.Current.FindFirst("name").Value</span>
+                if (AccountUsername.Contains("(Staff)"))
                 {
-                    <h2>Please enter the lab code</h2>
-                    <div class="errorMessage">
-                        <div id="error"></div>
+                    <div>
+                        Welcome to practical session support!
                     </div>
-                    <form id="form" action="@Url.Action("queue", "home")" method="get">
-                        <div style="margin-top: 1vh;">
-                            <input id="UserCode" name="UserCode" type="text"
-                                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                   @*Taken from "https://www.techiedelight.com/restrict-html-input-text-box-to-allow-only-numeric-values/"*@
-                                   maxlength="6" required value="123456" style="border-radius: 8px; width: 50vw;" />
-                        </div>
-                        <div style="margin-top: 3vh;">
-                            <p class="instruction"> This should be sent out at the beginning of the session by your module coordinator</p>
-                        </div>
-                        <div style="margin-top: 10vh;">
-                            <button class="JoinQueueBtn" type="submit">Join Queue</button>
-
-                        </div>
-                    </form>
-
-                    <script>
-                        // JavaScript source code
-                        const UserCode = document.getElementById('UserCode')
-                        const form = document.getElementById('form')
-                        const errorElement = document.getElementById('error')
-
-
-                        form.addEventListener('submit', (e) => {
-                            let messages = []
-                            if (UserCode.value === '' || UserCode.value == null) {
-                                messages.push("Please insert a user code to proceed")
-                            }
-
-
-                            if (UserCode.value === '123456') {
-                                messages.push('Please enter a unique code provided by a member of staff')
-                            } else if (UserCode.value.length != 6) {
-                                messages.push('Please enter 6 numbers')
-                            }
-                            else {
-                            }
-
-                            if (messages.length > 0) {
-                                e.preventDefault()
-                                errorElement.innerText = messages.join(',')
-                            }
-
-                        })
-                    </script>
-
                 }
+                else if (AccountUsername.Contains("(Student)"))
+                {
+                    <div>
+                        @Html.ActionLink("View Queues", "QueueList", "home", null, new { @class = "JoinQueueBtn" })
+                        <a class="CreateAQueueBtn" href="@Url.Action("CreateAQueue", "home")" role="button">
+                            New Queue
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="wrongAccount">Please log in with a Microsoft account with a Dundee domain</div><br />
+                }
+            }
 
 
-            </div>
+            @if (!string.IsNullOrWhiteSpace(Request.QueryString["errormessage"]))
+            {
+                <div class="loginError">Error: @Request.QueryString["errormessage"]</div>}
 
-
-            @*<input type="number" id="UserCode" name="UserCode" value="1234" maxlength="6" style="border-radius: 8px;" />*@
         </div>
     </div>
+
+
+
+
+
+
+        <div class="row" style="margin-top: 5vh; font-size: 2rem;">
+            <div class="col-lg-6 col-lg-offset-3">
+
+
+                <h1>Lab Support</h1>
+                <div style="margin-top: 10vh;">
+
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <h2>Please enter the lab code</h2>
+                        <div class="errorMessage">
+                            <div id="error"></div>
+                        </div>
+                        <form id="form" action="@Url.Action("queue", "home")" method="get">
+                            <div style="margin-top: 1vh;">
+                                <input id="UserCode" name="UserCode" type="text"
+                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                       @*Taken from "https://www.techiedelight.com/restrict-html-input-text-box-to-allow-only-numeric-values/"*@
+                                       maxlength="6" required value="123456" style="border-radius: 8px; width: 50vw;" />
+                            </div>
+                            <div style="margin-top: 3vh;">
+                                <p class="instruction"> This should be sent out at the beginning of the session by your module coordinator</p>
+                            </div>
+                            <div style="margin-top: 10vh;">
+                                <button class="JoinQueueBtn" type="submit">Join Queue</button>
+
+                            </div>
+                        </form>
+
+                        <script>
+                            // JavaScript source code
+                            const UserCode = document.getElementById('UserCode')
+                            const form = document.getElementById('form')
+                            const errorElement = document.getElementById('error')
+
+
+                            form.addEventListener('submit', (e) => {
+                                let messages = []
+                                if (UserCode.value === '' || UserCode.value == null) {
+                                    messages.push("Please insert a user code to proceed")
+                                }
+
+
+                                if (UserCode.value === '123456') {
+                                    messages.push('Please enter a unique code provided by a member of staff')
+                                } else if (UserCode.value.length != 6) {
+                                    messages.push('Please enter 6 numbers')
+                                }
+                                else {
+                                }
+
+                                if (messages.length > 0) {
+                                    e.preventDefault()
+                                    errorElement.innerText = messages.join(',')
+                                }
+
+                            })
+                        </script>
+
+                    }
+
+
+                </div>
+
+
+                @*<input type="number" id="UserCode" name="UserCode" value="1234" maxlength="6" style="border-radius: 8px;" />*@
+            </div>
+        </div>
+
+    </div>
+
+
 
 
 

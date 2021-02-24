@@ -187,6 +187,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resources\alert.wav" />
+    <Content Include="Resources\bg-image.jpg" />
     <Content Include="Resources\dundeeLogo.png" />
     <Content Include="Resources\dundeeLogoName.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -335,6 +336,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\CreateAQueue.cshtml" />
     <Content Include="Views\Home\QueueList.cshtml" />
+    <Content Include="Views\Home\QueueManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
