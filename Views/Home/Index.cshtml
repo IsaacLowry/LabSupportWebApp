@@ -1,4 +1,6 @@
-﻿@{
+﻿@model LabSupportWebApp.Models.StudentUser
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -53,78 +55,77 @@
 
 
 
-        <div class="row" style="margin-top: 5vh; font-size: 2rem;">
-            <div class="col-lg-6 col-lg-offset-3">
+    <div class="row" style="margin-top: 5vh; font-size: 2rem;">
+        <div class="col-lg-6 col-lg-offset-3">
 
 
-                <h1>Lab Support</h1>
-                <div style="margin-top: 10vh;">
+            <h1>Lab Support</h1>
+            <div style="margin-top: 10vh;">
 
 
-                    @if (Request.IsAuthenticated)
-                    {
-                        <h2>Please enter the lab code</h2>
-                        <div class="errorMessage">
-                            <div id="error"></div>
+                @if (Request.IsAuthenticated)
+                {
+                    <h2>Please enter the lab code</h2>
+                    <div class="errorMessage">
+                        <div id="error"></div>
+                    </div>
+                    <form id="form" action="@Url.Action("queue", "home")" method="post">
+                        <div style="margin-top: 1vh;">
+                            <input id="UserCode" name="UserCode" type="text"
+                                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                   @*Taken from "https://www.techiedelight.com/restrict-html-input-text-box-to-allow-only-numeric-values/"*@
+                                   maxlength="6" required value="123456" style="border-radius: 8px; width: 50vw;" />
                         </div>
-                        <form id="form" action="@Url.Action("queue", "home")" method="get">
-                            <div style="margin-top: 1vh;">
-                                <input id="UserCode" name="UserCode" type="text"
-                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                       @*Taken from "https://www.techiedelight.com/restrict-html-input-text-box-to-allow-only-numeric-values/"*@
-                                       maxlength="6" required value="123456" style="border-radius: 8px; width: 50vw;" />
-                            </div>
-                            <div style="margin-top: 3vh;">
-                                <p class="instruction"> This should be sent out at the beginning of the session by your module coordinator</p>
-                            </div>
-                            <div style="margin-top: 10vh;">
-                                <button class="JoinQueueBtn" type="submit">Join Queue</button>
+                        <div style="margin-top: 3vh;">
+                            <p class="instruction"> This should be sent out at the beginning of the session by your module coordinator</p>
+                        </div>
+                        <div style="margin-top: 10vh;">
+                            <button class="JoinQueueBtn" type="submit">Join Queue</button>
 
-                            </div>
-                        </form>
+                        </div>
+                    </form>
 
-                        <script>
-                            // JavaScript source code
-                            const UserCode = document.getElementById('UserCode')
-                            const form = document.getElementById('form')
-                            const errorElement = document.getElementById('error')
+                    <script>
+                        // JavaScript source code
+                        const UserCode = document.getElementById('UserCode')
+                        const form = document.getElementById('form')
+                        const errorElement = document.getElementById('error')
 
 
-                            form.addEventListener('submit', (e) => {
-                                let messages = []
-                                if (UserCode.value === '' || UserCode.value == null) {
-                                    messages.push("Please insert a user code to proceed")
-                                }
+                        form.addEventListener('submit', (e) => {
+                            let messages = []
+                            if (UserCode.value === '' || UserCode.value == null) {
+                                messages.push("Please insert a user code to proceed")
+                            }
 
 
-                                if (UserCode.value === '123456') {
-                                    messages.push('Please enter a unique code provided by a member of staff')
-                                } else if (UserCode.value.length != 6) {
-                                    messages.push('Please enter 6 numbers')
-                                }
-                                else {
-                                }
+                            if (UserCode.value === '123456') {
+                                messages.push('Please enter a unique code provided by a member of staff')
+                            } else if (UserCode.value.length != 6) {
+                                messages.push('Please enter 6 numbers')
+                            }
+                            else {
+                            }
 
-                                if (messages.length > 0) {
-                                    e.preventDefault()
-                                    errorElement.innerText = messages.join(',')
-                                }
+                            if (messages.length > 0) {
+                                e.preventDefault()
+                                errorElement.innerText = messages.join(',')
+                            }
 
-                            })
-                        </script>
+                        })
+                    </script>
 
-                    }
-
-
-                </div>
+                }
 
 
-                @*<input type="number" id="UserCode" name="UserCode" value="1234" maxlength="6" style="border-radius: 8px;" />*@
             </div>
-        </div>
 
+
+            @*<input type="number" id="UserCode" name="UserCode" value="1234" maxlength="6" style="border-radius: 8px;" />*@
+        </div>
     </div>
 
+</div>
 
 
 
@@ -138,24 +139,25 @@
 
 
 
-    @*<div class="row">
-            <div class="col-md-3 col-md-offset-2">
-                <h2>Getting started</h2>
-                <p>
-                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                    enables a clean separation of concerns and gives you full control over markup
-                    for enjoyable, agile development.
-                </p>
-                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-            </div>
-            <div class="col-md-3">
-                <h2>Get more libraries</h2>
-                <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-            </div>
-            <div class="col-md-3">
-                <h2>Web Hosting</h2>
-                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-            </div>
-        </div>*@
+
+@*<div class="row">
+        <div class="col-md-3 col-md-offset-2">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
