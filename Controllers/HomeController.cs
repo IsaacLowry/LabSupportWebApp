@@ -131,6 +131,27 @@ namespace LabSupportWebApp.Controllers
             
         }
 
+        public ActionResult NewAdminUser()
+        {
+            ViewBag.Message = "Open Queue";
+
+            return View();
+        }
+
+        public ActionResult AddAdminToQueue()
+        {
+            ViewBag.Message = "Open Queue";
+
+            return View();
+        }
+
+        public ActionResult RemoveAdminFromQueue()
+        {
+            ViewBag.Message = "Open Queue";
+
+            return View();
+        }
+
         public void SignIn()
         {
             if (!Request.IsAuthenticated)

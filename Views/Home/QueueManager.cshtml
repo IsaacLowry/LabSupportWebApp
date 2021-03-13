@@ -4,11 +4,38 @@
     ViewBag.Title = "QueueManager";
 }
 
+<style>
+
+    .openClass {
+        font-size: 12px;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        .openClass th {
+            background-color: #000b59;
+            border: 4px solid white;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .openClass td, th {
+            border: 2px dashed #a7e6fc;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .openClass tr:nth-child(even) {
+            background-color: #a7e6fc;
+        }
+</style>
+
 <div class="mainContainer">
 
     <div class="row" style="margin-top: 5vh; font-size: 2rem;">
         <div class="col-lg-6 col-lg-offset-3">
-            <div style="margin-top: 4vh;">
+            <div style="margin-top: 2vh;">
                 <a class="hyperlinkText" href=@Url.Action("QueueList", "home")><i class="fas fa-chevron-left"></i> Open Queues</a>
 
             </div>
@@ -16,34 +43,81 @@
         </div>
     </div>
 
-    <div class="row" style="margin-top: 8vh; font-size: 2rem;">
+    <div class="row">
 
         <h1>Lab Support</h1>
 
-        <div style="margin-top: 10vh;">
+        <div style="margin-top: 3vh;">
             <p>There are currently <i style="font-weight: bold;"> 12<i class="numberOfStudents"></i></i> remaining in the queue.</p>
         </div>
 
-        <div class="col-lg-3 col-lg-offset-3" style="margin-top: 5vh; align-content: center;">
+        <div class="col-lg-3 col-lg-offset-3" style="margin-top: 2vh; align-content: center;">
             <a class="JoinQueueBtn" href="#" role="button" data-toggle="modal">
                 Next Student
             </a>
 
         </div>
 
-        <div class="col-lg-3" style="margin-top: 5vh; align-content: center;">
-            <a class="CreateAQueueBtn" href="#" role="button" data-toggle="modal">
+        <div class="col-lg-3" style="margin-top: 3vh; align-content: center;">
+            <a class="JoinQueueBtn" href="#" role="button" data-toggle="modal">
                 End Session
             </a>
         </div>
-
+    </div>
+    <div class="row" style="margin-top: 3vh;">
+        <div>
+            <a class="AdminBtn" href="@Url.Action("AddAdminToQueue", "home")" role="button" style="padding: 0.5rem 5rem;">
+                Add Admin To Queue
+            </a>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 2vh;">
+        <div>
+            <a class="AdminBtn" href="@Url.Action("RemoveAdminFromQueue", "home")" role="button">
+                Remove Admin From Queue
+            </a>
+        </div>
     </div>
 
-    <div class="row" style="margin-top: 5vh; font-size: 2rem;">
+    <div class="row" style="margin-top: 1vh; font-size: 2rem;">
         <div class="col-lg-6 col-lg-offset-3">
-            <div style="margin-top: 4vh;">
-                <p>Code: ;</p><br />
-                <p></p>
+            <div style="margin-top: 1vh;">
+                <p>Code: <strong>XXXXXX</strong></p><br />
+            </div>
+            <div style="overflow-x: auto; overflow-y: auto; height: 14vh;">
+                <h2>Students that added a description</h2>
+                <table class="openClass">
+                    <tr>
+                        <th>Description</th>
+                        <th>Student Name</th>
+                        <th>Elapsed Time</th>
+                        <th>Pull To Front</th>
+                    </tr>
+                    <tr>
+                        <td>E.g Won't turn on</td>
+                        <td>Joe Bloggs</td>
+                        <td>20 minutes</td>
+                        <td style="text-align:center"><a href="@Url.Action("HeadOfQueue", "home")"><i class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>E.g No internet</td>
+                        <td>David</td>
+                        <td>20 minutes</td>
+                        <td style="text-align:center"><a href="@Url.Action("HeadOfQueue", "home")"><i class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>E.g No internet</td>
+                        <td>David</td>
+                        <td>20 minutes</td>
+                        <td style="text-align:center"><a href="@Url.Action("HeadOfQueue", "home")"><i class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>E.g No internet</td>
+                        <td>David</td>
+                        <td>20 minutes</td>
+                        <td style="text-align:center"><a href="@Url.Action("HeadOfQueue", "home")"><i class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                </table>
             </div>
 
         </div>

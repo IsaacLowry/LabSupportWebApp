@@ -30,9 +30,16 @@
                 else if (AccountUsername.Contains("(Student)"))
                 {
                     <div>
-                        @Html.ActionLink("View Queues", "QueueList", "home", null, new { @class = "JoinQueueBtn" })
-                        <a class="CreateAQueueBtn" href="@Url.Action("CreateAQueue", "home")" role="button">
+                        <a class="AdminBtn" href="@Url.Action("QueueList", "home")" role="button" style="padding: 0.5rem 1rem;">
+                            View Queues
+                        </a>
+                        <a class="AdminBtn" href="@Url.Action("CreateAQueue", "home")" role="button" style="padding: 0.5rem 1.5rem; margin-left: 1vw;">
                             New Queue
+                        </a>
+                    </div>
+                    <div class="row" style="margin-top: 2vh;">
+                        <a class="AdminBtn" href="@Url.Action("NewAdminUser", "home")" role="button" style="padding: 0.5rem 8rem;">
+                            New Admin User
                         </a>
                     </div>
                 }
@@ -55,12 +62,12 @@
 
 
 
-    <div class="row" style="margin-top: 5vh; font-size: 2rem;">
+    <div class="row" style="margin-top: 2vh; font-size: 2rem;">
         <div class="col-lg-6 col-lg-offset-3">
 
 
             <h1>Lab Support</h1>
-            <div style="margin-top: 10vh;">
+            <div style="margin-top: 5vh;">
 
 
                 @if (Request.IsAuthenticated)
@@ -74,12 +81,18 @@
                             <input id="UserCode" name="UserCode" type="text"
                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                    @*Taken from "https://www.techiedelight.com/restrict-html-input-text-box-to-allow-only-numeric-values/"*@
-                                   maxlength="6" required value="123456" style="border-radius: 8px; width: 50vw;" />
+                                   maxlength="6" required placeholder="123456" style="border-radius: 8px; width: 50vw;" />
                         </div>
                         <div style="margin-top: 3vh;">
-                            <p class="instruction"> This should be sent out at the beginning of the session by your module coordinator</p>
+                            <p class="instruction"> You should receive this at the beginning of the session from your lab coordinator</p>
                         </div>
-                        <div style="margin-top: 10vh;">
+                        <div class="row" style="margin-top: 3vh;">
+                            <div>
+                                <h2>Description for <strong style="color: #eb4253;">high priority</strong> issues</h2>
+                                <textarea id="Description" name="Description" rows="3" placeholder="E.g - Cannot log in." style="border-width: 2px; border-radius: 8px; font-size: 12px; text-align: center;" ></textarea>
+                            </div>
+                        </div>
+                        <div style="margin-top: 2vh;">
                             <button class="JoinQueueBtn" type="submit">Join Queue</button>
 
                         </div>
